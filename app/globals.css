@@ -143,7 +143,7 @@ body {
 
 /* ── Reusable glass panel utility class ────────────────────────────────
    Apply via className="glass-panel" instead of repeating
-   bg-*/backdrop-blur/border combinations inline in every component. */
+   background, backdrop-blur, and border combinations inline in every component. */
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
