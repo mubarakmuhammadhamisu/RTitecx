@@ -66,6 +66,7 @@
   --warning: #fbbf24;
   --danger: #f87171;
   --info: var(--indigo-400);
+  --bronze: #b45309; /* 3rd-place podium medal color (amber-700 equivalent) */
 
   /* ── Glassmorphism primitives ──────────────────────────────────────── */
   --glass-bg: rgba(17, 17, 24, 0.6);        /* bg-gray-900/60 equivalent */
@@ -129,6 +130,7 @@
   --color-warning: var(--warning);
   --color-danger: var(--danger);
   --color-info: var(--info);
+  --color-bronze: var(--bronze);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

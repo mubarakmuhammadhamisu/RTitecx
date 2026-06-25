@@ -58,3 +58,6 @@ yarn-error.log*
 #    not meant to be vendored into the repo ──────────────────────────
 /public/wasm-cache/
 /public/pyodide-cache/
+
+readme.md
+CHANGELOG.md

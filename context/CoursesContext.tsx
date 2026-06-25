@@ -36,6 +36,7 @@ interface CoursesContextValue {
   isLoading: boolean;
   loadError: boolean;
   markLessonComplete: (courseSlug: string, lessonId: string) => Promise<void>;
+  enroll: (courseSlug: string, enrollmentId?: string) => void;
   refetchEnrollments: () => Promise<void>;
 }
 
@@ -103,6 +104,47 @@ export function CoursesProvider({ children }: { children: React.ReactNode }) {
   const isEnrolled = (slug: string) => enrolledCourses.some((c) => c.slug === slug);
   const isLessonCompleted = (lessonId: string) => completedLessonIds.has(lessonId);
 
+  /**
+   * enroll — called AFTER the checkout page's own /api/enroll call has
+   * already succeeded server-side. This does not write to the database
+   * itself; it just updates local React state immediately so the new
+   * enrollment shows up instantly without waiting for a full refetch.
+   * If the locally-built enrollment is missing data (e.g. course not in
+   * the already-loaded catalog), falls back to a full refetch instead.
+   */
+  const enroll = (courseSlug: string, enrollmentId?: string) => {
+    if (!user) return;
+    if (isEnrolled(courseSlug)) return;
+
+    const schema = courses.find((c) => c.slug === courseSlug);
+    if (!schema) {
+      // Course wasn't in the already-loaded catalog (shouldn't normally
+      // happen since checkout reads from the same `courses` list) —
+      // fall back to a full refetch so state stays correct.
+      refetchEnrollments();
+      return;
+    }
+
+    setEnrolledCourses((prev) => [
+      ...prev,
+      {
+        id: enrollmentId ?? `temp-${courseSlug}`,
+        slug: schema.slug,
+        title: schema.title,
+        instructor: schema.instructor,
+        progress: 0,
+        duration: schema.duration,
+        students: 0,
+        thumbnail: schema.thumbnail,
+        gradientFrom: schema.gradientFrom,
+        gradientTo: schema.gradientTo,
+        nextLessonId: schema.modules[0]?.lessons[0]?.id,
+        enrolledAt: new Date().toISOString(),
+        purchaseType: 'standard',
+      },
+    ]);
+  };
+
   const markLessonComplete = async (courseSlug: string, lessonId: string) => {
     if (!user) return;
     if (completedLessonIds.has(lessonId)) return;
@@ -143,6 +185,7 @@ export function CoursesProvider({ children }: { children: React.ReactNode }) {
         isLoading,
         loadError,
         markLessonComplete,
+        enroll,
         refetchEnrollments,
       }}
     >

@@ -41,6 +41,7 @@ interface AuthContextValue {
   updateAvatar: (file: File) => Promise<{ error?: string }>;
   updatePassword: (currentPassword: string, newPassword: string) => Promise<{ error?: string }>;
   deleteAccount: () => Promise<{ error?: string }>;
+  refreshBalance: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -255,6 +256,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return {};
   };
 
+  /**
+   * refreshBalance — re-fetches the current profile row to pick up
+   * server-side changes to creditBalance/lifetimePoints (e.g. after
+   * spending points at checkout, or earning a referral commission).
+   * Reuses loadProfile rather than a separate query so the refreshed
+   * data goes through the exact same row->AppUser mapping.
+   */
+  const refreshBalance = async () => {
+    if (!user) return;
+    await loadProfile(user.id);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -270,6 +283,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         updateAvatar,
         updatePassword,
         deleteAccount,
+        refreshBalance,
       }}
     >
       {children}

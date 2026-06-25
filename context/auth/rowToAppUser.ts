@@ -18,6 +18,9 @@ export function rowToAppUser(row: ProfileRow): AppUser {
     location: row.location ?? '',
     bio: row.bio ?? '',
     phone: row.phone ?? '',
+    creditBalance: row.credit_balance ?? 0,
+    lifetimePoints: row.lifetime_points ?? 0,
+    referralCode: row.referral_code ?? '',
     preferences: row.preferences ?? {
       email_notifications: true,
       course_recommendations: true,

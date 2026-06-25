@@ -21,7 +21,7 @@ export default function HeroSection() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link
               href="/courses"
-              className="px-8 py-4 rounded-2xl bg-white text-surface-900 font-bold hover:bg-gray-100 transition-colors"
+              className="px-8 py-4 rounded-2xl bg-white text-surface-900 font-bold hover:bg-surface-200 transition-colors"
             >
               Browse Courses
             </Link>

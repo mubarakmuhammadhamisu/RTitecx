@@ -1,7 +1,73 @@
 # Titecx Forge — Setup Guide
 
+This guide has two parts:
+1. **Quick Start** — get the app running locally (clone, install, dev server).
+2. **Full Configuration** — connect real Supabase/Paystack/video-provider/
+   Google accounts so every feature actually works end-to-end.
+
+You can do Part 1 alone just to see the app boot (pages will error on
+data fetches without real Supabase credentials), but Part 2 is required
+for anything beyond static pages to function.
+
+---
+
+## Part 1 — Quick Start
+
+This project uses **pnpm** as its package manager. If you don't have it:
+
+```bash
+npm install -g pnpm
+```
+
+### Step 1 — Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd titecx-forge
+```
+
+(If you received this project as a zip instead of a git repo, just
+`cd` into the extracted folder — skip the `git clone` step.)
+
+### Step 2 — Install dependencies
+
+```bash
+pnpm install
+```
+
+### Step 3 — Set up environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+At this point `.env.local` has placeholder values. The app will start,
+but anything touching Supabase (login, courses, dashboard) will error
+until you complete **Part 2** below and fill in real values.
+
+### Step 4 — Run the dev server
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). You should see the
+TITECX FORGE landing page.
+
+### Other common commands
+
+```bash
+pnpm build      # production build
+pnpm start      # run the production build locally
+pnpm lint       # run ESLint
+```
+
+---
+
+## Part 2 — Full Configuration
+
 Follow this guide in order. Each section produces the values needed for
-`.env.local` (copy `.env.example` first: `cp .env.example .env.local`).
+`.env.local` (from Step 3 above).
 
 ---
 
@@ -20,6 +86,7 @@ Follow this guide in order. Each section produces the values needed for
    - `0004_interactive_lessons.sql`
    - `0005_payments_coupons_points_referrals.sql`
    - `0006_grading_strategy_flexibility.sql`
+   - `0007_profile_referral_fields.sql`
 
    Or, if using the Supabase CLI:
    ```bash
@@ -165,17 +232,7 @@ changes required. See that file's comments for the swap-in point.
 
 ---
 
-## 5. Running Locally
-
-```bash
-pnpm install
-cp .env.example .env.local   # then fill in the values from sections 1-4
-pnpm dev
-```
-
----
-
-## 6. What NOT to Commit
+## What NOT to Commit
 
 `.gitignore` already excludes all of the following, but as a sanity
 check before any `git push`, confirm none of these are staged:

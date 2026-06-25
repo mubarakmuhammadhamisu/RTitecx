@@ -16,6 +16,9 @@ export interface AppUser {
   location: string;
   bio: string;
   phone: string;
+  creditBalance: number;
+  lifetimePoints: number;
+  referralCode: string;
   preferences: {
     email_notifications: boolean;
     course_recommendations: boolean;

@@ -17,6 +17,9 @@ export interface ProfileRow {
   location: string;
   bio: string;
   phone: string;
+  credit_balance: number;
+  lifetime_points: number;
+  referral_code: string;
   preferences: {
     email_notifications: boolean;
     course_recommendations: boolean;

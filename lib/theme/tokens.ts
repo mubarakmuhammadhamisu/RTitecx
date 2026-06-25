@@ -64,6 +64,7 @@ export const semanticColors = {
   warning: '#fbbf24',
   danger: '#f87171',
   info: accentColors.indigo[400],
+  bronze: '#b45309',
 } as const;
 
 /** Default chart/player accent — used as the fallback "key color" for any
