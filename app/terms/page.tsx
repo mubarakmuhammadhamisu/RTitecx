@@ -1,0 +1,104 @@
+import Navbar from '@/components/ui/Navbar/Navbar';
+import Footer from '@/components/ui/Footer/Footer';
+import LegalPageHero from '@/components/legal/LegalPageHero';
+import LegalSection from '@/components/legal/LegalSection';
+
+/**
+ * /terms — Terms of Service. Content preserved EXACTLY (word-for-word,
+ * including the refund policy's specific language) from the original
+ * codebase per brand/legal-fidelity requirement.
+ */
+export default function TermsPage() {
+  return (
+    <main className="min-h-screen bg-surface-950 text-text-secondary">
+      <Navbar />
+
+      <LegalPageHero titlePrefix="Terms of" titleHighlight="Service" lastUpdated="January 22, 2026" />
+
+      <section className="max-w-4xl mx-auto px-4 pb-32 space-y-10">
+        <LegalSection title="1. Acceptance of Terms">
+          By accessing and using TITECX, you agree to be bound by these Terms of Service and all
+          applicable laws. If you do not agree with any of these terms, you are prohibited from
+          using or accessing this platform.
+        </LegalSection>
+
+        <LegalSection title="2. Description of Service">
+          TITECX provides high-quality online educational courses designed to teach real-world
+          skills. Access to specific courses requires purchase. Courses are subject to
+          availability and we reserve the right to modify, update, or discontinue course content
+          at any time.
+        </LegalSection>
+
+        <LegalSection title="3. User Accounts">
+          You are responsible for maintaining the confidentiality of your account credentials.
+          You agree to notify us immediately of any unauthorised use of your account. TITECX is
+          not liable for any loss resulting from unauthorised access to your account.
+        </LegalSection>
+
+        <LegalSection title="4. Payments, Refunds, and Digital Product Policy">
+          All payments are processed securely through Paystack. By completing a purchase on
+          TITECX, you acknowledge and agree to the following refund policy:{' '}
+          <br />
+          <br />
+          <strong className="text-text-primary">Digital Product Nature:</strong> All courses sold
+          on TITECX are digital products delivered immediately upon payment confirmation. Because
+          access to course content is granted instantly, purchases are generally non-refundable
+          once the course has been accessed or any lesson has been started.{' '}
+          <strong className="text-text-primary">Eligibility for Refund:</strong> A refund may be
+          granted only if (a) you request it within 24 hours of purchase, and (b) you have not
+          accessed, streamed, or downloaded any part of the course content. Refund requests made
+          after 24 hours or after content has been accessed will not be eligible.{' '}
+          <strong className="text-text-primary">How to Request:</strong> To request a refund
+          within the eligible window, email{' '}
+          <span className="text-brand-indigo-400">support@TITECX.com</span> with your full name,
+          registered email, and the Paystack payment reference number. We will process eligible
+          refunds within 5–10 business days back to your original payment method.{' '}
+          <br />
+          <br />
+          <strong className="text-text-primary">Technical Issues:</strong> If you are unable to
+          access content due to a verified technical fault on our platform, contact support
+          within 7 days of purchase. We will investigate and, where the fault is confirmed, offer
+          a full refund or equivalent course credit at our discretion.{' '}
+          <br />
+          <br />
+          <strong className="text-text-primary">Chargebacks:</strong> Initiating a chargeback or
+          payment dispute with your bank or card provider without first contacting our support
+          team may result in immediate suspension of your account and forfeiture of access to all
+          enrolled courses.
+        </LegalSection>
+
+        <LegalSection title="5. Intellectual Property">
+          All course content — including videos, text, images, and code — is the exclusive
+          property of TITECX and its instructors. You may not reproduce, distribute, or create
+          derivative works without explicit written permission.
+        </LegalSection>
+
+        <LegalSection title="6. User Conduct">
+          Users agree to use the platform for lawful purposes only. You must not share account
+          credentials, redistribute paid course content, or use the platform to harass, spam, or
+          harm other users.
+        </LegalSection>
+
+        <LegalSection title="7. Limitation of Liability">
+          TITECX is provided on an &quot;as is&quot; basis. We make no warranties regarding the
+          accuracy or completeness of course content. To the maximum extent permitted by law,
+          TITECX shall not be liable for any indirect, incidental, or consequential damages.
+        </LegalSection>
+
+        <LegalSection title="8. Changes to Terms">
+          We reserve the right to modify these terms at any time. Continued use of the platform
+          after changes constitutes acceptance of the revised terms. We will notify users of
+          material changes via email or an in-app notice.
+        </LegalSection>
+
+        <LegalSection title="9. Contact">
+          If you have any questions about these Terms or wish to submit a refund request, please
+          email us at <span className="text-brand-indigo-400">support@TITECX.com</span>. We aim
+          to respond to all enquiries within 2 business days.
+        </LegalSection>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}

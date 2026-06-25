@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════════════════
+   TITECX FORGE — GLOBAL DESIGN TOKENS
+   ────────────────────────────────────────────────────────────────────────
+   This file is the ONLY place color values are allowed to be defined as
+   raw hex/rgb. Every component in the app must reference these tokens via
+   Tailwind utility classes mapped below (@theme inline) or via the CSS
+   custom properties directly (var(--brand-indigo-500), etc).
+
+   Do NOT hardcode a hex color in any .tsx file. If a new shade is needed,
+   add it here first, then consume it.
+
+   Source of truth: extracted from the original Titecx Forge codebase
+   (logo gradient stops, button gradients, glass panel opacities, and
+   dominant Tailwind color-class usage frequency across the app).
+   ════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Base surface scale (dark-mode-only product) ───────────────────── */
+  --surface-950: #0a0a0f;   /* page background */
+  --surface-900: #111118;   /* primary panel background */
+  --surface-800: #1a1a24;   /* secondary panel / card background */
+  --surface-700: #25252f;   /* elevated card / input background */
+  --surface-600: #34343f;   /* borders on dark panels */
+
+  /* ── Foreground / text scale ───────────────────────────────────────── */
+  --text-primary: #f4f4f6;    /* headings, primary content */
+  --text-secondary: #c9c9d3;  /* body copy */
+  --text-muted: #9494a3;      /* captions, meta text */
+  --text-faint: #6b6b7a;      /* disabled, placeholders */
+
+  /* ── Brand gradient: the wordmark "X" (blue → indigo) ──────────────── */
+  --brand-x-from: #4a97f0;
+  --brand-x-via:  #3f2af8;
+  --brand-x-to:   #4a97f0;
+
+  /* ── Brand gradient: the wordmark "Forge" (purple → pink) ──────────── */
+  --brand-forge-from: #9c39f8;
+  --brand-forge-via:  #e62481;
+  --brand-forge-to:   #983af0;
+
+  /* ── Primary accent scale — Indigo (most-used accent across the app) ─ */
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+
+  /* ── Secondary accent scale — Purple ────────────────────────────────── */
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+
+  /* ── Tertiary accent scale — Pink/Fuchsia (gradient terminus, CTAs) ──── */
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+
+  /* ── Semantic / status colors ──────────────────────────────────────── */
+  --success: #34d399;
+  --success-bg: rgba(52, 211, 153, 0.1);
+  --success-border: rgba(52, 211, 153, 0.3);
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: var(--indigo-400);
+
+  /* ── Glassmorphism primitives ──────────────────────────────────────── */
+  --glass-bg: rgba(17, 17, 24, 0.6);        /* bg-gray-900/60 equivalent */
+  --glass-bg-soft: rgba(26, 26, 36, 0.5);   /* bg-gray-800/50 equivalent */
+  --glass-border: rgba(255, 255, 255, 0.1); /* border-white/10 equivalent */
+  --glass-border-accent: rgba(99, 102, 241, 0.2); /* border-indigo-500/20 */
+  --glass-blur: 12px;
+  --glass-blur-sm: 6px;
+
+  /* ── Primary gradient (buttons, CTAs) ──────────────────────────────── */
+  --gradient-cta-from: var(--indigo-500);
+  --gradient-cta-to: var(--purple-500);
+
+  /* ── Video player accent (Bunny provider default key color) ───────── */
+  --player-accent-primary: #6366f1;
+  --player-accent-secondary: #8b5cf6;
+
+  /* ── Radii & shadows (kept centralized for consistency, not strictly
+        "color" but part of the same design-system contract) ──────────── */
+  --radius-card: 1rem;     /* rounded-2xl */
+  --radius-control: 0.75rem; /* rounded-xl */
+  --shadow-glow-indigo: 0 0 24px rgba(99, 102, 241, 0.35);
+  --shadow-glow-purple: 0 0 24px rgba(168, 85, 247, 0.35);
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   Tailwind v4 theme mapping — exposes the tokens above as Tailwind
+   utilities, e.g. bg-surface-900, text-brand-muted, border-glass.
+   This is what lets every component use Tailwind classes WITHOUT any
+   component ever typing a raw hex value.
+   ════════════════════════════════════════════════════════════════════════ */
+@theme inline {
+  --color-surface-950: var(--surface-950);
+  --color-surface-900: var(--surface-900);
+  --color-surface-800: var(--surface-800);
+  --color-surface-700: var(--surface-700);
+  --color-surface-600: var(--surface-600);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+
+  --color-brand-indigo-200: var(--indigo-200);
+  --color-brand-indigo-300: var(--indigo-300);
+  --color-brand-indigo-400: var(--indigo-400);
+  --color-brand-indigo-500: var(--indigo-500);
+  --color-brand-indigo-600: var(--indigo-600);
+  --color-brand-indigo-700: var(--indigo-700);
+
+  --color-brand-purple-400: var(--purple-400);
+  --color-brand-purple-500: var(--purple-500);
+  --color-brand-purple-600: var(--purple-600);
+  --color-brand-purple-700: var(--purple-700);
+
+  --color-brand-pink-300: var(--pink-300);
+  --color-brand-pink-400: var(--pink-400);
+  --color-brand-pink-500: var(--pink-500);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--surface-950);
+  color: var(--text-primary);
+}
+
+/* ── Reusable glass panel utility class ────────────────────────────────
+   Apply via className="glass-panel" instead of repeating
+   bg-*/backdrop-blur/border combinations inline in every component. */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-soft {
+  background: var(--glass-bg-soft);
+  backdrop-filter: blur(var(--glass-blur-sm));
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  border: 1px solid var(--glass-border-accent);
+}
+
+/* ── Brand gradient text utilities (logo wordmark) ─────────────────────── */
+.text-gradient-x {
+  background-image: linear-gradient(to right, var(--brand-x-from), var(--brand-x-via), var(--brand-x-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-forge {
+  background-image: linear-gradient(to top, var(--brand-forge-from), var(--brand-forge-via), var(--brand-forge-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-cta {
+  background-image: linear-gradient(to right, var(--gradient-cta-from), var(--gradient-cta-to));
+}
+
+/* ── Toast slide-in animation (carried over from original) ────────────── */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.toast-animate {
+  animation: toast-in 0.25s ease-out forwards;
+}
